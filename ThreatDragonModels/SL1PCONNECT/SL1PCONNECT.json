@@ -1,11 +1,9 @@
 {
-  "version": "2.6.2",
-  "release_version": "1",
-  "released_at": "2026-11-04",
+  "version": "2.2.0",
   "summary": {
     "title": "SL1PCONNECT",
-    "owner": "Aproteau & Amamouna",
-    "description": "",
+    "owner": "",
+    "description": "Modèle de menaces de l'infrastructure OVH SL1PCONNECT (plateforme IoT connectée), converti depuis infra_sl1pconnect.drawio.",
     "id": 0
   },
   "detail": {
@@ -13,12 +11,948 @@
     "diagrams": [
       {
         "id": 0,
-        "title": "Diagram SL1PCONNECT",
+        "title": "Infrastructure OVH",
         "diagramType": "STRIDE",
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
-        "version": "2.6.2",
-        "cells": []
+        "version": "2.2.0",
+        "cells": [
+          {
+            "position": {
+              "x": 40,
+              "y": 300
+            },
+            "size": {
+              "width": 1020,
+              "height": 400
+            },
+            "attrs": {
+              "label": {
+                "text": "DMZ — 10.0.1.0/24"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 3,
+                "strokeDasharray": "10 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "3bc2b4a5-fdc0-4f62-bb1b-88925720af15",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "DMZ — 10.0.1.0/24",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 200,
+              "y": 480
+            },
+            "size": {
+              "width": 620,
+              "height": 190
+            },
+            "attrs": {
+              "label": {
+                "text": "Conteneurs Docker (bridge partagé)"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 3,
+                "strokeDasharray": "10 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "f0d41e65-f159-47fa-95e1-e321c946d5b5",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Conteneurs Docker (bridge partagé)",
+              "description": "Conteneurs en mode root, réseau bridge partagé (à vérifier).",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 300,
+              "y": 760
+            },
+            "size": {
+              "width": 400,
+              "height": 160
+            },
+            "attrs": {
+              "label": {
+                "text": "LAN interne — 10.0.2.0/24"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 3,
+                "strokeDasharray": "10 5"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "zIndex": -1,
+            "id": "df914e7c-a2a0-4523-b8e3-11e3344d12e3",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "LAN interne — 10.0.2.0/24",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 470,
+              "y": 20
+            },
+            "size": {
+              "width": 180,
+              "height": 80
+            },
+            "attrs": {
+              "text": {
+                "text": "Internet (utilisateurs / objets connectés)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 2,
+            "id": "6736362f-cba5-4aed-b56c-fedc2eaf3c18",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Internet (utilisateurs / objets connectés)",
+              "description": "Accès externes à la plateforme IoT.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "providesAuthentication": false
+            }
+          },
+          {
+            "position": {
+              "x": 510,
+              "y": 160
+            },
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "attrs": {
+              "text": {
+                "text": "Firewall OVH"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 3,
+            "id": "60b565b1-b036-416c-8f7c-7436c2ad59ab",
+            "data": {
+              "type": "tm.Process",
+              "name": "Firewall OVH",
+              "description": "Règles par défaut (point d'attention).",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "privilegeLevel": "",
+              "isWebApplication": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false
+            }
+          },
+          {
+            "position": {
+              "x": 70,
+              "y": 340
+            },
+            "size": {
+              "width": 120,
+              "height": 120
+            },
+            "attrs": {
+              "text": {
+                "text": "BOXER-HOST — Nginx reverse proxy (10.0.1.10)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 4,
+            "id": "fd63dafb-657f-43bd-b20d-6b1f59e52211",
+            "data": {
+              "type": "tm.Process",
+              "name": "BOXER-HOST — Nginx reverse proxy (10.0.1.10)",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "privilegeLevel": "",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false
+            }
+          },
+          {
+            "position": {
+              "x": 450,
+              "y": 330
+            },
+            "size": {
+              "width": 120,
+              "height": 120
+            },
+            "attrs": {
+              "text": {
+                "text": "DOCKER-HOST (10.0.1.20)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 5,
+            "id": "a1185e9a-7741-4a2e-b47d-5ccaa210a6ad",
+            "data": {
+              "type": "tm.Process",
+              "name": "DOCKER-HOST (10.0.1.20)",
+              "description": "Hôte Docker, conteneurs en mode root.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "privilegeLevel": "",
+              "isWebApplication": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false
+            }
+          },
+          {
+            "position": {
+              "x": 220,
+              "y": 525
+            },
+            "size": {
+              "width": 110,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "BOXER — API Flask :8080"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 6,
+            "id": "bdec06e9-cc45-4ecb-88c3-ed40a6db9650",
+            "data": {
+              "type": "tm.Process",
+              "name": "BOXER — API Flask :8080",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "privilegeLevel": "",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false
+            }
+          },
+          {
+            "position": {
+              "x": 370,
+              "y": 525
+            },
+            "size": {
+              "width": 110,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "BRIEF — PHP/Apache :8081"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 7,
+            "id": "0bfbd5f6-a00e-49f9-a930-e4e71a531353",
+            "data": {
+              "type": "tm.Process",
+              "name": "BRIEF — PHP/Apache :8081",
+              "description": "Vulnérabilité identifiée : injection SQL.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "privilegeLevel": "",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false
+            }
+          },
+          {
+            "position": {
+              "x": 520,
+              "y": 525
+            },
+            "size": {
+              "width": 110,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "SENSOR — Node.js :8082"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 8,
+            "id": "84e32e52-6ccc-4e57-b4c8-1b29fa8d54d3",
+            "data": {
+              "type": "tm.Process",
+              "name": "SENSOR — Node.js :8082",
+              "description": "Traite des données de santé.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "privilegeLevel": "",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false
+            }
+          },
+          {
+            "position": {
+              "x": 670,
+              "y": 525
+            },
+            "size": {
+              "width": 110,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "WATCH — Grafana :9090"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 9,
+            "id": "a259206e-53fe-4c88-9c94-0928e5aabcaf",
+            "data": {
+              "type": "tm.Process",
+              "name": "WATCH — Grafana :9090",
+              "description": "Vulnérabilité identifiée : identifiants par défaut admin/admin.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "privilegeLevel": "",
+              "isWebApplication": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false
+            }
+          },
+          {
+            "position": {
+              "x": 860,
+              "y": 360
+            },
+            "size": {
+              "width": 170,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "PGSQL-HOST — PostgreSQL 12 (10.0.1.30)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 10,
+            "id": "d787f710-3d36-4256-8304-d27948764cf0",
+            "data": {
+              "type": "tm.Store",
+              "name": "PGSQL-HOST — PostgreSQL 12 (10.0.1.30)",
+              "description": "Données de santé (RGPD / HDS).",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "isALog": false,
+              "storesCredentials": true,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesInventory": false
+            }
+          },
+          {
+            "position": {
+              "x": 415,
+              "y": 800
+            },
+            "size": {
+              "width": 170,
+              "height": 90
+            },
+            "attrs": {
+              "text": {
+                "text": "FILE-HOST — partage SMB (10.0.2.10)"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 11,
+            "id": "45f07469-33dd-4eff-9932-e46fc7739dd1",
+            "data": {
+              "type": "tm.Store",
+              "name": "FILE-HOST — partage SMB (10.0.2.10)",
+              "description": "Partage de fichiers interne.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "threats": [],
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesInventory": false
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 12,
+            "connector": "smooth",
+            "labels": [
+              "Trafic entrant"
+            ],
+            "id": "93c20567-d77b-4978-bb08-856d4e5ebf24",
+            "source": {
+              "cell": "6736362f-cba5-4aed-b56c-fedc2eaf3c18"
+            },
+            "target": {
+              "cell": "60b565b1-b036-416c-8f7c-7436c2ad59ab"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Trafic entrant",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 13,
+            "connector": "smooth",
+            "labels": [
+              "Accès web"
+            ],
+            "id": "ba510a26-9584-4849-bc91-69c8cf8aebd7",
+            "source": {
+              "cell": "60b565b1-b036-416c-8f7c-7436c2ad59ab"
+            },
+            "target": {
+              "cell": "fd63dafb-657f-43bd-b20d-6b1f59e52211"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Accès web",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "HTTP/HTTPS",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 14,
+            "connector": "smooth",
+            "labels": [
+              "Accès direct hôte Docker"
+            ],
+            "id": "23156da5-a192-4a77-8f70-1ea82b02dd1f",
+            "source": {
+              "cell": "60b565b1-b036-416c-8f7c-7436c2ad59ab"
+            },
+            "target": {
+              "cell": "a1185e9a-7741-4a2e-b47d-5ccaa210a6ad"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Accès direct hôte Docker",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 15,
+            "connector": "smooth",
+            "labels": [
+              "Accès base de données"
+            ],
+            "id": "6467763b-a431-484b-af13-07012697dc44",
+            "source": {
+              "cell": "60b565b1-b036-416c-8f7c-7436c2ad59ab"
+            },
+            "target": {
+              "cell": "d787f710-3d36-4256-8304-d27948764cf0"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Accès base de données",
+              "description": "Flux direct pare-feu → base visible sur le schéma (à vérifier).",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "PostgreSQL",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 16,
+            "connector": "smooth",
+            "labels": [
+              "Reverse proxy"
+            ],
+            "id": "2cb3e135-d5e0-44ee-8b74-95a4b2d3ccd6",
+            "source": {
+              "cell": "fd63dafb-657f-43bd-b20d-6b1f59e52211"
+            },
+            "target": {
+              "cell": "a1185e9a-7741-4a2e-b47d-5ccaa210a6ad"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Reverse proxy",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "HTTP",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 17,
+            "connector": "smooth",
+            "labels": [
+              "Bridge Docker"
+            ],
+            "id": "532146f3-0ed3-4b64-b90a-701b3d52535c",
+            "source": {
+              "cell": "a1185e9a-7741-4a2e-b47d-5ccaa210a6ad"
+            },
+            "target": {
+              "cell": "bdec06e9-cc45-4ecb-88c3-ed40a6db9650"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Bridge Docker",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "HTTP",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 18,
+            "connector": "smooth",
+            "labels": [
+              "Bridge Docker"
+            ],
+            "id": "5fc3bb6c-0658-4d6b-b74b-63b4cb855fc6",
+            "source": {
+              "cell": "a1185e9a-7741-4a2e-b47d-5ccaa210a6ad"
+            },
+            "target": {
+              "cell": "0bfbd5f6-a00e-49f9-a930-e4e71a531353"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Bridge Docker",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "HTTP",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 19,
+            "connector": "smooth",
+            "labels": [
+              "Bridge Docker"
+            ],
+            "id": "348f0d65-04d2-4158-a401-74518bdca87a",
+            "source": {
+              "cell": "a1185e9a-7741-4a2e-b47d-5ccaa210a6ad"
+            },
+            "target": {
+              "cell": "84e32e52-6ccc-4e57-b4c8-1b29fa8d54d3"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Bridge Docker",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "HTTP",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 20,
+            "connector": "smooth",
+            "labels": [
+              "Bridge Docker"
+            ],
+            "id": "a336a192-6eb7-4a51-9f01-03824fecb404",
+            "source": {
+              "cell": "a1185e9a-7741-4a2e-b47d-5ccaa210a6ad"
+            },
+            "target": {
+              "cell": "a259206e-53fe-4c88-9c94-0928e5aabcaf"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Bridge Docker",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "HTTP",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 21,
+            "connector": "smooth",
+            "labels": [
+              "Requêtes SQL"
+            ],
+            "id": "3d11a1f6-b484-48db-8072-1e7ea0715733",
+            "source": {
+              "cell": "bdec06e9-cc45-4ecb-88c3-ed40a6db9650"
+            },
+            "target": {
+              "cell": "d787f710-3d36-4256-8304-d27948764cf0"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Requêtes SQL",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "PostgreSQL",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 22,
+            "connector": "smooth",
+            "labels": [
+              "Accès LAN"
+            ],
+            "id": "a76f1923-d27c-47e1-94be-0c791239b1c4",
+            "source": {
+              "cell": "60b565b1-b036-416c-8f7c-7436c2ad59ab"
+            },
+            "target": {
+              "cell": "45f07469-33dd-4eff-9932-e46fc7739dd1"
+            },
+            "vertices": [],
+            "data": {
+              "type": "tm.Flow",
+              "name": "Accès LAN",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "SMB",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": true,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          }
+        ]
       }
     ],
     "diagramTop": 1,
